@@ -1,0 +1,37 @@
+*.zip binary
+*.lzh binary
+*.7z binary
+
+*.gal binary
+*.edg binary
+*.sai2 binary
+*.psd binary
+*.jpg binary
+*.png binary
+*.bmp binary
+*.gif binary
+*.tga binary
+*.ktx binary
+*.tiff binary
+*.ppm binary
+*.pgm binary
+*.raw binary
+*.dds binary
+*.avif binary
+*.ico binary
+*.webp binary
+
+*.ttf binary
+*.otf binary
+
+*.ogg binary
+*.dms binary
+*.mid binary
+*.song binary
+
+*.mpg binary
+*.mp4 binary
+*.avi binary
+*.flv binary
+*.mov binary
+*.wmv binary
