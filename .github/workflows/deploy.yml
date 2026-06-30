@@ -1,8 +1,16 @@
+# https://docs.github.com/en/actions/tutorials/create-an-example-workflow
+# https://vite.dev/guide/static-deploy
+# https://github.com/kododake/PrintTools/blob/main/.github/workflows/deploy.yml
+# https://svelte.dev/docs/kit/adapter-static
+
 name: Deploy static content to Pages
 
 on:
+  # Runs on pushes targeting the default branch
   push:
-    branches: ['main']
+    branches:
+      - main
+
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -22,12 +30,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Install Node.js
+        uses: actions/setup-node@v6
         with:
-          node-version: 24
+          node-version: '24'
           cache: npm
 
       - name: Install dependencies
@@ -37,12 +45,12 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          DEPLOY_TARGET: github-pages
+          BASE_PATH: '/${{ github.event.repository.name }}'
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
-          path: dist
+          path: './dist'
 
   deploy:
     runs-on: ubuntu-latest
@@ -53,4 +61,4 @@ jobs:
     steps:
       - name: Deploy
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
